@@ -32,7 +32,7 @@
         <div class="right-container">
             <input type="text" class="search-box" placeholder="search">
             <button class="sub-btn">Subscribe</button>
-            <a href="#" class="login-link">login</a>
+            <a href="#" class="login-link">Login</a>
         </div>
     </nav>
 
