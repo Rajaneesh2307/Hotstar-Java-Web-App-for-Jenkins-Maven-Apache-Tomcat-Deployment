@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -9,12 +8,10 @@
 }
 
 body {
-  background: linear-gradient(180deg, #0c111b, #000);
+  background: #000;
   overflow-x: hidden;
-  color: white;
 }
 
-/* BACKGROUND */
 .background-image {
   position: fixed;
   top: 0;
@@ -22,157 +19,174 @@ body {
   width: 100%;
   height: 100%;
   background: url(https://github.com/CanisCoder/jenkins-java-project/blob/master/src/netflixbackground.jpg?raw=true) center/cover;
-  opacity: 0.3;
+  opacity: 0.5;
   z-index: -1;
 }
 
-/* NAVBAR */
 nav {
   position: fixed;
-  width: 100%;
-  padding: 20px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  z-index: 10;
+  padding: 25px 60px;
+  z-index: 1;
 }
 
 nav a img {
-  width: 150px;
+  width: 167px;
 }
 
-/* FORM CONTAINER */
 .form-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
-  border-radius: 12px;
-  padding: 60px;
-  width: 420px;
+  border-radius: 4px;
+  padding: 70px;
+  width: 480px;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.75);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  border: 2px;
 }
 
-/* HEADING */
 .form-wrapper h2 {
+  color: #fff;
   font-size: 2rem;
+}
+
+.form-wrapper form {
+  margin: 25px 0 65px;
+}
+
+form .form-control {
+  height: 25px;
+  position: relative;
+  margin-top: 10px;
+  padding-top: 5px;
   margin-bottom: 20px;
 }
 
-/* INPUT FIELDS */
-.form-control {
-  position: relative;
-  margin-bottom: 25px;
-}
-
 .form-control input {
+  height: 200%;
   width: 100%;
-  height: 50px;
-  background: #1f1f1f;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  padding: 15px;
+  background-color: #262b2e;
+  border: none;
+  outline: none;
+  border-radius: 4px;
   color: #fff;
   font-size: 1rem;
-  transition: 0.3s;
+  padding-top: 10px;
+  padding: 5px 20px;
 }
 
-.form-control input:focus {
-  border: 1px solid #1f80e0;
-  background: #2c2c2c;
+.form-control input:is(:focus, :valid) {
+  background: #444;
+  padding: 20px 30px 5px;
 }
 
-/* FLOATING LABEL */
 .form-control label {
   position: absolute;
   left: 15px;
-  top: 50%;
+  top: 82%;
   transform: translateY(-50%);
-  font-size: 0.9rem;
-  color: #aaa;
-  transition: 0.3s;
+  font-size: 1rem;
   pointer-events: none;
+  color: #fefafa;
+  transition: all 0.1s ease;
 }
 
-.form-control input:focus ~ label,
-.form-control input:valid ~ label {
-  top: 5px;
-  font-size: 0.7rem;
-  color: #1f80e0;
+.form-control input:is(:focus, :valid) ~ label {
+  font-size: 0.75rem;
+  align-items: center;
+  transform: translateY(-130%);
 }
 
-/* BUTTON */
 form button {
   width: 100%;
-  padding: 14px;
-  background: linear-gradient(90deg, #1f80e0, #0a5cc0);
-  border: none;
-  border-radius: 6px;
-  color: white;
+  padding: 16px 0;
   font-size: 1rem;
-  font-weight: 600;
+  background: #e50914;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  margin: 25px 0 10px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s ease;
 }
 
 form button:hover {
-  transform: scale(1.03);
-  box-shadow: 0 5px 20px rgba(31,128,224,0.6);
+  background: #c40812;
 }
 
-/* LINKS */
 .form-wrapper a {
   text-decoration: none;
-  color: #1f80e0;
 }
 
 .form-wrapper a:hover {
   text-decoration: underline;
 }
 
-/* TEXT */
-.form-wrapper p,
-.form-wrapper small {
-  color: #aaa;
+.form-wrapper :where(label, p, small, a) {
+  color: #b3b3b3;
+}
+
+form .form-help {
+  display: flex;
+  justify-content: space-between;
+}
+
+form .remember-me {
+  display: flex;
+}
+
+form .remember-me input {
+  margin-right: 5px;
+  accent-color: #b3b3b3;
+}
+
+form .form-help :where(label, a) {
+  font-size: 0.9rem;
 }
 
 .form-wrapper p a {
-  color: white;
+  color: #fff;
 }
 
-/* HELP SECTION */
-.form-help {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+.form-wrapper small {
+  display: block;
+  margin-top: 15px;
+  color: #b3b3b3;
 }
 
-.remember-me {
-  display: flex;
-  align-items: center;
+.form-wrapper small a {
+  color: #0071eb;
 }
 
-.remember-me input {
-  margin-right: 5px;
-  accent-color: #1f80e0;
-}
+@media (max-width: 740px) {
+  body::before {
+    display: none;
+  }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  nav {
-    padding: 15px 20px;
+  nav,
+  .form-wrapper {
+    padding: 20px;
   }
 
   nav a img {
-    width: 120px;
+    width: 140px;
   }
 
   .form-wrapper {
-    width: 90%;
-    padding: 30px;
-    top: 45%;
+    width: 80%;
+    padding: 40px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+  }
+
+  .form-wrapper form {
+    margin: 25px 0 20px;
+  }
+
+  .form-control label {
+    top: 80%;
   }
 }
