@@ -1,11 +1,14 @@
 /* ---------------- Google Fonts ---------------- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 /* ---------------- Root ---------------- */
 :root {
     --background: #0c111b;
     --text-color: #fff;
     --button: #1f80e0;
+    --spacing: 10px;
+    --transition: 0.3s ease-in-out;
+    --card-radius: 8px;
 }
 
 * {
@@ -21,8 +24,8 @@ html {
 body {
     width: 100%;
     background: var(--background);
-    position: relative;
     font-family: "Roboto", sans-serif;
+    color: var(--text-color);
 }
 
 /* ---------------- Navbar ---------------- */
@@ -37,44 +40,36 @@ body {
     z-index: 9;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
-    height: 80px;
-    width: 140px;
+    height: 60px;
+    width: auto;
 }
 
 .nav-links {
-    margin-top: 10px;
     display: flex;
     list-style: none;
+    gap: var(--spacing);
 }
 
 .nav-items a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
-    opacity: 0.9;
     font-size: 16px;
     font-weight: 400;
-    padding: 20px 15px 20px;
+    padding: 20px 15px;
+    transition: var(--transition);
 }
 
-.nav-items a:hover {
+.nav-items a:hover,
+.nav-items a:focus {
     color: var(--text-color);
+    opacity: 1;
 }
 
-.nav-links .icon {
-    margin-left: 15px;
-    width: 40px;
-    height: 15px;
-    background: url(../img/kids.svg) no-repeat;
-}
-
-.right-container {
-    display: block;
-    margin-left: auto;
-}
-
+/* ---------------- Search & Buttons ---------------- */
 .search-box {
     border: none;
     border-bottom: 1px solid #aaa;
@@ -83,40 +78,49 @@ body {
     height: 30px;
     color: var(--text-color);
     width: 250px;
-    text-transform: capitalize;
     font-size: 16px;
     font-weight: 500;
-    transition: 0.5s;
+    transition: var(--transition);
 }
 
 .search-box:focus {
-    width: 400px;
+    width: 350px;
     border-color: var(--button);
 }
 
 .sub-btn {
     background: var(--button);
-    height: 30px;
+    height: 35px;
     padding: 0 20px;
     color: var(--text-color);
-    border-radius: 5px;
+    border-radius: var(--card-radius);
     border: none;
-    outline: none;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 12px;
     margin: 0 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.sub-btn:hover {
+    background: #1565c0;
 }
 
 .login-link {
     color: var(--text-color);
-    opacity: 0.9;
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 700;
     text-decoration: none;
+    transition: var(--transition);
 }
 
+.login-link:hover {
+    opacity: 1;
+}
+
+/* ---------------- Carousel ---------------- */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -130,7 +134,6 @@ body {
     display: flex;
     width: 92%;
     height: 100%;
-    position: relative;
     margin: auto;
 }
 
@@ -139,19 +142,17 @@ body {
     margin-right: 30px;
     position: relative;
     background: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
+    border-radius: var(--card-radius);
     width: 100%;
     height: 100%;
-    left: 0;
-    transition: 1s;
+    transition: var(--transition);
     overflow: hidden;
 }
 
 .slider img {
     width: 70%;
-    min-height: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
     margin-left: auto;
 }
 
@@ -159,118 +160,40 @@ body {
     position: absolute;
     width: 50%;
     height: 100%;
-    z-index: 2;
-    background: linear-gradient(to right, #030b17 80%, #0c111b00);
-    color: var(--text-color);
+    background: linear-gradient(to right, #030b17 80%, transparent);
     top: 0;
+    padding: 50px;
 }
 
 .movie-title {
-    padding-left: 50px;
     text-transform: capitalize;
     margin-top: 80px;
+    font-size: 28px;
+    font-weight: 700;
 }
 
 .movie-des {
     width: 80%;
-    line-height: 30px;
-    padding-left: 50px;
-    margin-top: 30px;
-    opacity: 0.8;
+    line-height: 1.6;
+    margin-top: 20px;
+    opacity: 0.85;
+    font-size: 16px;
 }
 
-.video-card-container {
-    position: relative;
-    width: 92%;
-    margin: auto;
-    height: 10vw;
-    display: flex;
-    margin-bottom: 20px;
-    justify-content: space-between;
-}
-
-.video-card {
-    position: relative;
-    min-width: calc(100%/5 - 10px);
-    width: calc(100%/5 - 10px);
-    height: 100%;
-    border-radius: 5px;
-    overflow: hidden;
-    background: #030b17;
-}
-
-.video-card-image,
-.card-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-video {
-    position: absolute;
-}
-
-.video-card:hover .video-card-image {
-    display: none;
-}
-
-.title {
-    color: var(--text-color);
-    opacity: 0.9;
-    padding-left: 4%;
-    text-transform: capitalize;
-    font-size: 22px;
-    font-weight: 500;
-}
-
-.movies-list {
-    width: 100%;
-    height: 220px;
-    position: relative;
-    margin: 10px 0 20px;
-}
-
-.card-container {
-    position: relative;
-    width: 92%;
-    padding-left: 10px;
-    height: 220px;
-    display: flex;
-    margin: 0 auto;
-    align-items: center;
-    overflow-x: auto;
-    overflow-y: visible;
-    scroll-behavior: smooth;
-}
-
-.card-container::-webkit-scrollbar {
-    display: none;
-}
-
+/* ---------------- Cards ---------------- */
 .card {
-    position: relative;
     min-width: 150px;
     width: 150px;
     height: 200px;
-    border-radius: 5px;
+    border-radius: var(--card-radius);
     overflow: hidden;
     margin-right: 10px;
-    transition: 0.5s;
+    transition: transform var(--transition);
     background: #000;
 }
 
-.card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 .card:hover {
-    transform: scale(1.1);
-}
-
-.card:hover .card-body {
-    opacity: 1;
+    transform: scale(1.08);
 }
 
 .card-body {
@@ -280,90 +203,46 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
     background: linear-gradient(to bottom, rgba(4, 8, 15, 0), #192133 90%);
     padding: 10px;
-    transition: 0.5s;
+    transition: opacity var(--transition);
 }
 
-.name {
-    color: var(--text-color);
-    font-size: 15px;
-    font-weight: 500;
-    text-transform: capitalize;
-    margin-top: 60%;
-}
-
-.des {
-    color: var(--text-color);
-    opacity: 0.8;
-    margin: 5px 0;
-    font-weight: 500;
-    font-size: 12px;
-}
-
-.watchlist-btn {
-    position: relative;
-    width: 100%;
-    text-transform: capitalize;
-    background: none;
-    border: none;
-    font-weight: 500;
-    text-align: right;
-    color: rgba(255, 255, 255, 0.5);
-    margin: 5px 0;
-    cursor: pointer;
-    padding: 10px 5px;
-    border-radius: 5px;
-}
-
-.watchlist-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -5px;
-    height: 35px;
-    width: 35px;
-    background-image: url(../img/add.png);
-    background-size: cover;
-    transform: scale(0.4);
-}
-
-.watchlist-btn:hover {
-    color: var(--text-color);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.pre-btn,
-.nxt-btn {
-    position: absolute;
-    top: 0;
-    width: 5%;
-    height: 100%;
-    z-index: 2;
-    border: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.pre-btn {
-    left: 0;
-    background: linear-gradient(to right, #0c111b 0%, #0c111b00);
-}
-
-.nxt-btn {
-    right: 0;
-    background: linear-gradient(to right, #0c111b 0%, #0c111b00);
-}
-
-.pre-btn img,
-.nxt-btn img {
-    width: 15px;
-    height: 20px;
-    opacity: 0;
-}
-
-.pre-btn:hover img,
-.nxt-btn:hover img {
+.card:hover .card-body {
     opacity: 1;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .search-box {
+        width: 180px;
+    }
+
+    .carousel-container {
+        height: 300px;
+    }
+
+    .movie-title {
+        font-size: 20px;
+    }
+
+    .movie-des {
+        font-size: 14px;
+    }
+
+    .video-card-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .card {
+        width: 120px;
+        height: 160px;
+    }
 }
