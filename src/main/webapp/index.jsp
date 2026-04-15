@@ -22,10 +22,10 @@
         <img src="./assets/img/logo (1).svg" class="logo" alt="Logo">
         <ul class="nav-links">
             <li class="nav-items"><a href="#">TV</a></li>
-            <li class="nav-items"><a href="#">Movies</a></li>
-            <li class="nav-items"><a href="#">Sports</a></li>
-            <li class="nav-items"><a href="#">Premium</a></li>
-            <li class="nav-items"><a href="#">Disney+</a></li>
+            <li class="nav-items"><a href="#">MOVIES</a></li>
+            <li class="nav-items"><a href="#">SPORTS</a></li>
+            <li class="nav-items"><a href="#">PREMIUM</a></li>
+            <li class="nav-items"><a href="#">DISNEY+</a></li>
             <li class="icon"><a href="#"></a></li>
         </ul>
 
