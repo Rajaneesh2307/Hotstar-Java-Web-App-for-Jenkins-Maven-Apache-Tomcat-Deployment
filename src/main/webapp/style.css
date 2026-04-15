@@ -1,5 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
 
+/* ---------------- Root Variables ---------------- */
+:root {
+  --background: #000;
+  --overlay: rgba(0, 0, 0, 0.75);
+  --primary: #e50914;
+  --primary-hover: #c40812;
+  --text-light: #fff;
+  --text-muted: #b3b3b3;
+  --link: #0071eb;
+  --transition: 0.3s ease-in-out;
+  --radius: 6px;
+}
+
+/* ---------------- Reset ---------------- */
 * {
   margin: 0;
   padding: 0;
@@ -8,21 +22,25 @@
 }
 
 body {
-  background: #000;
+  background: var(--background);
   overflow-x: hidden;
 }
 
+/* ---------------- Background ---------------- */
 .background-image {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(https://github.com/CanisCoder/jenkins-java-project/blob/master/src/netflixbackground.jpg?raw=true) center/cover;
-  opacity: 0.5;
+  background: 
+    linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.3)),
+    url(https://github.com/CanisCoder/jenkins-java-project/blob/master/src/netflixbackground.jpg?raw=true) center/cover;
+  opacity: 0.7;
   z-index: -1;
 }
 
+/* ---------------- Navbar ---------------- */
 nav {
   position: fixed;
   padding: 25px 60px;
@@ -30,143 +48,130 @@ nav {
 }
 
 nav a img {
-  width: 167px;
+  width: 160px;
+  transition: var(--transition);
 }
 
+nav a img:hover {
+  transform: scale(1.05);
+}
+
+/* ---------------- Form Wrapper ---------------- */
 .form-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
-  border-radius: 4px;
-  padding: 70px;
   width: 480px;
+  padding: 60px;
+  border-radius: var(--radius);
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.75);
-  border: 2px;
+  background: var(--overlay);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
 .form-wrapper h2 {
-  color: #fff;
+  color: var(--text-light);
   font-size: 2rem;
-}
-
-.form-wrapper form {
-  margin: 25px 0 65px;
-}
-
-form .form-control {
-  height: 25px;
-  position: relative;
-  margin-top: 10px;
-  padding-top: 5px;
   margin-bottom: 20px;
 }
 
+/* ---------------- Form Controls ---------------- */
+.form-wrapper form {
+  margin: 25px 0 40px;
+}
+
+.form-control {
+  position: relative;
+  margin-bottom: 25px;
+}
+
 .form-control input {
-  height: 200%;
   width: 100%;
   background-color: #262b2e;
   border: none;
   outline: none;
-  border-radius: 4px;
-  color: #fff;
+  border-radius: var(--radius);
+  color: var(--text-light);
   font-size: 1rem;
-  padding-top: 10px;
-  padding: 5px 20px;
+  padding: 12px 16px;
+  transition: var(--transition);
 }
 
-.form-control input:is(:focus, :valid) {
+.form-control input:focus {
   background: #444;
-  padding: 20px 30px 5px;
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 .form-control label {
   position: absolute;
-  left: 15px;
-  top: 82%;
+  left: 16px;
+  top: 50%;
   transform: translateY(-50%);
   font-size: 1rem;
+  color: var(--text-muted);
   pointer-events: none;
-  color: #fefafa;
-  transition: all 0.1s ease;
+  transition: var(--transition);
 }
 
 .form-control input:is(:focus, :valid) ~ label {
-  font-size: 0.75rem;
-  align-items: center;
-  transform: translateY(-130%);
+  font-size: 0.8rem;
+  top: -8px;
+  color: var(--link);
 }
 
+/* ---------------- Buttons ---------------- */
 form button {
   width: 100%;
-  padding: 16px 0;
+  padding: 14px 0;
   font-size: 1rem;
-  background: #e50914;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 4px;
+  background: var(--primary);
+  color: var(--text-light);
+  font-weight: 600;
+  border-radius: var(--radius);
   border: none;
-  outline: none;
-  margin: 25px 0 10px;
   cursor: pointer;
-  transition: 0.1s ease;
+  transition: var(--transition);
 }
 
 form button:hover {
-  background: #c40812;
+  background: var(--primary-hover);
 }
 
+/* ---------------- Links & Help ---------------- */
 .form-wrapper a {
   text-decoration: none;
+  color: var(--link);
+  transition: var(--transition);
 }
 
 .form-wrapper a:hover {
   text-decoration: underline;
 }
 
-.form-wrapper :where(label, p, small, a) {
-  color: #b3b3b3;
+.form-wrapper p,
+.form-wrapper small {
+  color: var(--text-muted);
 }
 
 form .form-help {
   display: flex;
   justify-content: space-between;
+  font-size: 0.9rem;
 }
 
 form .remember-me {
   display: flex;
+  align-items: center;
 }
 
 form .remember-me input {
   margin-right: 5px;
-  accent-color: #b3b3b3;
+  accent-color: var(--primary);
 }
 
-form .form-help :where(label, a) {
-  font-size: 0.9rem;
-}
-
-.form-wrapper p a {
-  color: #fff;
-}
-
-.form-wrapper small {
-  display: block;
-  margin-top: 15px;
-  color: #b3b3b3;
-}
-
-.form-wrapper small a {
-  color: #0071eb;
-}
-
+/* ---------------- Responsive ---------------- */
 @media (max-width: 740px) {
-  body::before {
-    display: none;
-  }
-
-  nav,
-  .form-wrapper {
+  nav {
     padding: 20px;
   }
 
@@ -175,18 +180,17 @@ form .form-help :where(label, a) {
   }
 
   .form-wrapper {
-    width: 80%;
+    width: 90%;
     padding: 40px;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -30%);
+    top: 40%;
+    transform: translate(-50%, -40%);
   }
 
-  .form-wrapper form {
-    margin: 25px 0 20px;
+  .form-wrapper h2 {
+    font-size: 1.5rem;
   }
 
   .form-control label {
-    top: 80%;
+    font-size: 0.9rem;
   }
 }
